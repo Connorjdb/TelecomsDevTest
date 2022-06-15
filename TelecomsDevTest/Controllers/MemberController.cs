@@ -31,5 +31,13 @@ namespace TelecomsDevTest.Controllers
             await _memberService.DeleteMemberAsync(id, token);
             return await _memberService.LoadMembersAsync(token);
         }
+
+        [HttpGet]
+        [Route("checkin/{id:Guid}")]
+        public async Task<bool> CheckIn(Guid id, CancellationToken token = default)
+        {
+            _logger.LogInformation($"Check in member called: {DateTime.UtcNow}, ID: {id}");
+            return await _memberService.CheckInMemberAsync(id, token);
+        }
     }
 }

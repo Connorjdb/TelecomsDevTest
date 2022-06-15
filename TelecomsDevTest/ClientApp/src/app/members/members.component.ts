@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MembersComponent {
   public members: Member[] = [];
+  public checkInResult: boolean | undefined;
 
   private _client: HttpClient;
   private _baseURL: string;
@@ -23,6 +24,12 @@ export class MembersComponent {
   deleteMember(id: string): void {
     this._client.delete<Member[]>(this._baseURL + 'member/' + id).subscribe(result => {
       this.members = result;
+    }, error => console.error(error));
+  }
+
+  checkInMember(id: string): void {
+    this._client.get<boolean>(this._baseURL + 'member/checkin/' + id).subscribe(result => {
+      this.checkInResult = result;
     }, error => console.error(error));
   }
 }

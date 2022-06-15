@@ -21,6 +21,19 @@ namespace TestRepositories
             await _context.SaveChangesAsync(cancellationToken);
         }
 
+        public async Task<MembershipDetail> GetMembershipDetailAsync(Guid memberId, CancellationToken cancellationToken)
+        {
+            return await _context.Members
+                .Include(x => x.MembershipType)
+                .Where(x => x.Id == memberId)
+                .Select(x => new MembershipDetail
+                {
+                    DayFrom = (DayOfWeek)x.MembershipType.DayFrom,
+                    DayTo = (DayOfWeek)x.MembershipType.DayTo,
+                })
+                .FirstAsync(cancellationToken);
+        }
+
         public async Task<IEnumerable<MemberModel>> GetMembersAsync(CancellationToken cancellationToken)
         {
             return await _context.Members.Include(x => x.MembershipType).Include(x => x.AccessInformation).Select(x => new MemberModel

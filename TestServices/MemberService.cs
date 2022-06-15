@@ -8,9 +8,17 @@ namespace TestServices
     {
         private readonly IMemberRepository _memberRepository;
 
-        public MemberService(IMemberRepository memberRepository, IQrGeneratorService qrGeneratorService)
+        public MemberService(IMemberRepository memberRepository)
         {
             _memberRepository = memberRepository;
+        }
+
+        public async Task<bool> CheckInMemberAsync(Guid memberId, CancellationToken token)
+        {
+            var memberDetails = await _memberRepository.GetMembershipDetailAsync(memberId, token);
+            var today = DateTime.Now.DayOfWeek;
+
+            return memberDetails.DayFrom <= today && memberDetails.DayTo >= today;
         }
 
         public async Task DeleteMemberAsync(Guid memberId, CancellationToken token)

@@ -1,6 +1,7 @@
 <h1 id="tableLabel">Members</h1>
 
 <p *ngIf="!members"><em>Loading...</em></p>
+<p><em>{{checkInResult}}</em></p>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="members">
   <thead>
@@ -12,6 +13,7 @@
       <th>Membership Type</th>
       <th>Access Code</th>
       <th>Delete</th>
+      <th>Check In</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +25,7 @@
       <td>{{ member.membershipType }}</td>
       <td> {{ member.accessCode }}</td>
       <td><button (click)="deleteMember(member.id)">Delete</button></td>
+      <td><button (click)="checkInMember(member.id)">Check In</button></td>
     </tr>
   </tbody>
 </table>
