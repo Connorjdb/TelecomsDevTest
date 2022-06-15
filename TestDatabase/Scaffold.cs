@@ -74,7 +74,7 @@ namespace TestDatabaseSqlite
                     Code = rnd.Next(1000, 9999),
                     UpdatedDate = DateTime.Now
                 },
-                MembershipTypeId = 2
+                MembershipTypeId = 1
             });
 
             memId = Guid.NewGuid();
@@ -92,7 +92,7 @@ namespace TestDatabaseSqlite
                     Code = rnd.Next(1000, 9999),
                     UpdatedDate = DateTime.Now
                 },
-                MembershipTypeId = 3
+                MembershipTypeId = 1
             });
 
             memId = Guid.NewGuid();
@@ -128,7 +128,7 @@ namespace TestDatabaseSqlite
                     Code = rnd.Next(1000, 9999),
                     UpdatedDate = DateTime.Now
                 },
-                MembershipTypeId = 1
+                MembershipTypeId = 2
             });
 
             memId = Guid.NewGuid();
@@ -164,7 +164,7 @@ namespace TestDatabaseSqlite
                     Code = rnd.Next(1000, 9999),
                     UpdatedDate = DateTime.Now
                 },
-                MembershipTypeId = 1
+                MembershipTypeId = 3
             });
 
             memId = Guid.NewGuid();
@@ -182,7 +182,7 @@ namespace TestDatabaseSqlite
                     Code = rnd.Next(1000, 9999),
                     UpdatedDate = DateTime.Now
                 },
-                MembershipTypeId = 1
+                MembershipTypeId = 3
             });
 
             memId = Guid.NewGuid();
@@ -200,7 +200,7 @@ namespace TestDatabaseSqlite
                     Code = rnd.Next(1000, 9999),
                     UpdatedDate = DateTime.Now
                 },
-                MembershipTypeId = 1
+                MembershipTypeId = 3
             });
 
             return members;
