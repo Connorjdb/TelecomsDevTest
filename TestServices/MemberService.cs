@@ -13,6 +13,11 @@ namespace TestServices
             _memberRepository = memberRepository;
         }
 
+        public async Task DeleteMemberAsync(Guid memberId, CancellationToken token)
+        {
+            await _memberRepository.DeleteMemberAsync(memberId, token);
+        }
+
         public async Task<IEnumerable<MemberModel>> LoadMembersAsync(CancellationToken token)
         {
             return await _memberRepository.GetMembersAsync(token);

@@ -19,6 +19,12 @@ export class MembersComponent {
     this._client = http;
     this._baseURL = baseUrl;
   }
+
+  deleteMember(id: string): void {
+    this._client.delete<Member[]>(this._baseURL + 'member/' + id).subscribe(result => {
+      this.members = result;
+    }, error => console.error(error));
+  }
 }
 
 interface Member {
@@ -27,4 +33,6 @@ interface Member {
   firstName: string;
   surname: string;
   dateOfBirth: Date;
+  membershipType: string;
+  accessCode: string;
 }

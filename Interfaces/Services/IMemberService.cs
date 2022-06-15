@@ -10,5 +10,6 @@ namespace Interfaces.Services
     public interface IMemberService
     {
         Task<IEnumerable<MemberModel>> LoadMembersAsync(CancellationToken token);
+        Task DeleteMemberAsync(Guid memberId, CancellationToken token);
     }
 }

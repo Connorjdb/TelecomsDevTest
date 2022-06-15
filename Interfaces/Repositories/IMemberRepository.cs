@@ -10,5 +10,6 @@ namespace Interfaces.Repositories
     public interface IMemberRepository
     {
         Task<IEnumerable<MemberModel>> GetMembersAsync(CancellationToken cancellationToken);
+        Task DeleteMemberAsync(Guid memberId, CancellationToken cancellationToken);
     }
 }

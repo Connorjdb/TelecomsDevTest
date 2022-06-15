@@ -22,5 +22,14 @@ namespace TelecomsDevTest.Controllers
             _logger.LogInformation($"Get members called: {DateTime.UtcNow}");
             return await _memberService.LoadMembersAsync(token);
         }
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IEnumerable<TestSharedModels.Models.MemberModel>> Delete(Guid id, CancellationToken token = default)
+        {
+            _logger.LogInformation($"Delete member called: {DateTime.UtcNow}, ID: {id}");
+            await _memberService.DeleteMemberAsync(id, token);
+            return await _memberService.LoadMembersAsync(token);
+        }
     }
 }
