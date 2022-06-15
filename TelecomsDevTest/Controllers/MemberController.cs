@@ -39,5 +39,13 @@ namespace TelecomsDevTest.Controllers
             _logger.LogInformation($"Check in member called: {DateTime.UtcNow}, ID: {id}");
             return await _memberService.CheckInMemberAsync(id, token);
         }
+
+        [HttpGet]
+        [Route("qr/{id:Guid}")]
+        public async Task<string> GetQr(Guid id, CancellationToken token = default)
+        {
+            _logger.LogInformation($"Get QR called: {DateTime.UtcNow}, ID: {id}");
+            return await _memberService.GenerateQr(id, token);
+        }
     }
 }

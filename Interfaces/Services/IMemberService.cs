@@ -12,5 +12,6 @@ namespace Interfaces.Services
         Task<IEnumerable<MemberModel>> LoadMembersAsync(CancellationToken token);
         Task DeleteMemberAsync(Guid memberId, CancellationToken token);
         Task<bool> CheckInMemberAsync(Guid memberId, CancellationToken token);
+        Task<string> GenerateQr(Guid memberId, CancellationToken token);
     }
 }

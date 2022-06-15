@@ -47,5 +47,14 @@ namespace TestRepositories
                 MembershipType = x.MembershipType.DisplayText
             }).ToListAsync(cancellationToken);
         }
+
+        public async Task<int> LoadMembersCodeAsync(Guid memberId, CancellationToken cancellationToken)
+        {
+            return await _context.Members
+                .Include(x => x.AccessInformation)
+                .Where(x => x.Id == memberId)
+                .Select(x => x.AccessInformation.Code)
+                .FirstAsync(cancellationToken);
+        }
     }
 }

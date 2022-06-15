@@ -2,6 +2,7 @@
 
 <p *ngIf="!members"><em>Loading...</em></p>
 <p><em>{{checkInResult}}</em></p>
+<img *ngIf="qrBase64" [src]="qrBase64" />
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="members">
   <thead>
@@ -12,6 +13,7 @@
       <th>Date of Birth</th>
       <th>Membership Type</th>
       <th>Access Code</th>
+      <th>QR</th>
       <th>Delete</th>
       <th>Check In</th>
     </tr>
@@ -24,6 +26,7 @@
       <td>{{ member.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
       <td>{{ member.membershipType }}</td>
       <td> {{ member.accessCode }}</td>
+      <td><button (click)="loadQr(member.id)">QR</button></td>
       <td><button (click)="deleteMember(member.id)">Delete</button></td>
       <td><button (click)="checkInMember(member.id)">Check In</button></td>
     </tr>
